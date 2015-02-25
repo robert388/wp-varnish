@@ -5,7 +5,7 @@
     "type": "wordpress-plugin",
     "authors": [
         {
-            "name": "pkhamre",
+            "name": "pkhamre"
         }
     ],
     "minimum-stability": "stable",
