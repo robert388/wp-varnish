@@ -1,0 +1,13 @@
+{
+    "name": "robert388/wp-varnish",
+    "description": "WordPress Varnish is a simple plugin that purges new and edited content.",
+    "license": "MIT",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "pkhamre",
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
