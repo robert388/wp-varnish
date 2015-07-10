@@ -808,22 +808,21 @@ class WPVarnish {
 	 */
 	public static function getBaseURL( $path = '', $original_url = false ) {
 		global $current_site;
-		
+
 		// check for domain mapping plugin by donncha
 		if ( function_exists( 'domain_mapping_siteurl' ) && $original_url == false ) {
 			$base_url = domain_mapping_siteurl( 'NA' );
 			$base_url = untrailingslashit( $base_url );
 			$base_url .= $path;
 		} elseif ( is_multisite() && is_subdomain_install() == false ) {
-			$base_url = network_site_url( $path );
-			$base_url = str_replace($current_site->path, '', $base_url);
+			$base_url = get_bloginfo('url');
 		} else {
 			$base_url = home_url( $path );
 		}
 
 		return $base_url;
 	}
-	
+
 	/**
 	 * Log message into debug file if option or constant allow it !
 	 * @param string $message
