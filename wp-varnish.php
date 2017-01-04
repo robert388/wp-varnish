@@ -54,6 +54,10 @@ class WPVarnish {
 		// When a post or custom post type is published, or if it is edited and its status is "published".
 		add_action( 'publish_post', array( $this, 'PurgePost' ), 99 );
 		add_action( 'publish_post', array( $this, 'PurgeCommonObjects' ), 99 );
+
+		add_action( 'save_post', array( $this, 'PurgePost' ), 99 );
+		add_action( 'save_post', array( $this, 'PurgeCommonObjects' ), 99 );
+
 		// When a page is published, or if it is edited and its status is "published".
 		add_action( 'publish_page', array( $this, 'PurgePost' ), 99 );
 		add_action( 'publish_page', array( $this, 'PurgeCommonObjects' ), 99 );
@@ -312,7 +316,7 @@ class WPVarnish {
 
 		$post = get_post( $post_id );
 		// We need a post object, so we perform a few checks.
-		if ( !is_object( $post ) || !isset( $post->post_type ) || !in_array( get_post_type( $post ), array( 'post', 'page', 'attachment' ) ) ) {
+		if ( !is_object( $post ) || !isset( $post->post_type ) ) {
 			return false;
 		}
 
